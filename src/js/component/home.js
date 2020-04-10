@@ -1,24 +1,69 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import Camera from "react-html5-camera-photo";
+import "react-html5-camera-photo/build/css/index.css";
+import axios from "axios";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+import ImagePreview from "./ImagePreview";
 
-//create your first component
-export function Home() {
+export const Home = () => {
+	const [dataUri, setDataUri] = useState("");
+	const [run, setRun] = useState(false);
+
+	useEffect(
+		() => {
+			if (run) {
+				handleTakePhotoAnimationDone();
+				setRun(false);
+			}
+		},
+		[run]
+	);
+
+	const handleTakePhotoAnimationDone = dataUri => {
+		//console.log("takePhoto");
+		setDataUri(dataUri);
+	};
+
+	const pictureSendHandler = () => {
+		console.log("sending picture");
+		let image = new Image();
+		image.src = dataUri;
+		image.alt = "First View";
+		image.name = "Hello world";
+		console.log(image);
+		axios
+			.post("localhost:8000", {
+				name: image.name,
+				src: image.src,
+				alt: image.alt
+			})
+			.then(resp => {
+				console.log(resp);
+			});
+
+		console.log("picture was sent");
+	};
+
+	const isFullscreen = false;
+
 	return (
-		<div className="text-center mt-5">
-			<h1>Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+		<div>
+			{dataUri ? (
+				<ImagePreview dataUri={dataUri} isFullscreen={isFullscreen} />
+			) : (
+				<Camera
+					onTakePhotoAnimationDone={handleTakePhotoAnimationDone}
+					isFullscreen={isFullscreen}
+				/>
+			)}
+
+			<button onClick={pictureSendHandler}>Send Picture</button>
+			<button
+				onClick={() => {
+					setRun(true);
+				}}>
+				New Picture
+			</button>
 		</div>
 	);
-}
+};
