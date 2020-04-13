@@ -27,7 +27,7 @@ export const Home = () => {
 		// image.src = dataUri;
 		// image.alt = "First View";
 		// image.name = "Hello world";
-		console.log(dataUri);
+		// console.log(dataUri);
 		axios
 			.post("https://snkrsden-api.herokuapp.com/media", {
 				alt: "some text",
@@ -42,6 +42,7 @@ export const Home = () => {
 			})
 			.then(resp => {
 				console.log(resp);
+				setRun(true);
 			});
 
 		console.log("picture was sent");
