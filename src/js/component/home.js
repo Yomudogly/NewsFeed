@@ -51,7 +51,7 @@ export const Home = () => {
 	const isFullscreen = false;
 
 	return (
-		<div>
+		<div style={{ maxHeight: "80%" }}>
 			{dataUri ? (
 				<ImagePreview dataUri={dataUri} isFullscreen={isFullscreen} />
 			) : (
