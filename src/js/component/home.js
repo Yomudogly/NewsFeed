@@ -9,15 +9,12 @@ export const Home = () => {
 	const [dataUri, setDataUri] = useState("");
 	const [run, setRun] = useState(false);
 
-	useEffect(
-		() => {
-			if (run) {
-				handleTakePhotoAnimationDone();
-				setRun(false);
-			}
-		},
-		[run]
-	);
+	useEffect(() => {
+		if (run) {
+			handleTakePhotoAnimationDone();
+			setRun(false);
+		}
+	}, [run]);
 
 	const handleTakePhotoAnimationDone = dataUri => {
 		//console.log("takePhoto");
