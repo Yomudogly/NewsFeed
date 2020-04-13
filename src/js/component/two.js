@@ -69,7 +69,7 @@ export const Two = () => {
 			)}
 			<Link
 				to={{
-					pathname: "/third",
+					pathname: "/three",
 					search: location.search
 				}}>
 				<button onClick={pictureSendHandler}>Send Picture</button>

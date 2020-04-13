@@ -5,6 +5,7 @@
 !.gitignore
 !.gitpod.yml
 !.github
+!.env
 php_errorlog
 .log
 
