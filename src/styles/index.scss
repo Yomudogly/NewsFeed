@@ -11,3 +11,12 @@
     import 'relative/path/to/stylesheet.scss';
 
 */
+
+.mask2 {
+    -webkit-mask-image: url(../../mask.png);
+    // -webkit-mask-size: 50%;
+    // -webkit-mask-origin: content-box;
+    // -webkit-mask-repeat-y: no-repeat;
+    // -webkit-mask-position-y: center;
+    mask-image: url(../../mask.png);    
+}

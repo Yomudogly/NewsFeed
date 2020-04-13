@@ -1,13 +1,23 @@
 import React, { useState, useEffect } from "react";
 import Camera, { FACING_MODES, IMAGE_TYPES } from "react-html5-camera-photo";
-import "react-html5-camera-photo/build/css/index.css";
+import { Link } from "react-router-dom";
+import queryString from "query-string";
 import axios from "axios";
 
-import ImagePreview from "./ImagePreview";
+import "react-html5-camera-photo/build/css/index.css";
+import "../../styles/index.scss";
 
-export const Home = () => {
+import ImagePreview from "./imagePreview/imagePreview";
+
+export const Two = () => {
 	const [dataUri, setDataUri] = useState("");
 	const [run, setRun] = useState(false);
+
+	// useEffect(() => {
+	// 	const values = queryString.parse(location.search);
+	// 	console.log(values.id);
+	// 	console.log(values.size);
+	// });
 
 	useEffect(() => {
 		if (run) {
@@ -22,39 +32,30 @@ export const Home = () => {
 	};
 
 	const pictureSendHandler = () => {
-		console.log("sending picture");
-		// let image = new Image();
-		// image.src = dataUri;
-		// image.alt = "First View";
-		// image.name = "Hello world";
-		// console.log(dataUri);
+		const values = queryString.parse(location.search);
+
 		axios
 			.post("https://snkrsden-api.herokuapp.com/media", {
-				alt: "some text",
-				description: "another text",
+				alt: "Second photo",
 				image: dataUri,
-				pre_owned_id: 1,
-				product_id: 1,
-				sizes_shoes_val: 8,
-				status: 0,
-				thumbnail: "new string",
-				user_id: 1
+				product_id: values.product,
+				sizes_shoes_val: values.size,
+				user_id: values.id
 			})
 			.then(resp => {
-				console.log(resp);
-				setRun(true);
+				console.log(resp.statusText);
+				// setRun(true);
 			});
-
-		console.log("picture was sent");
 	};
 
 	const isFullscreen = false;
 
 	return (
-		<div style={{ maxHeight: "80%" }}>
+		<div>
 			{dataUri ? (
 				<ImagePreview dataUri={dataUri} isFullscreen={isFullscreen} />
 			) : (
+				// <div className="mask2">
 				<Camera
 					onTakePhotoAnimationDone={handleTakePhotoAnimationDone}
 					isFullscreen={isFullscreen}
@@ -64,14 +65,21 @@ export const Home = () => {
 					isMaxResolution={true}
 					imageType={IMAGE_TYPES.JPG}
 				/>
+				// </div>
 			)}
+			<Link
+				to={{
+					pathname: "/third",
+					search: location.search
+				}}>
+				<button onClick={pictureSendHandler}>Send Picture</button>
+			</Link>
 
-			<button onClick={pictureSendHandler}>Send Picture</button>
 			<button
 				onClick={() => {
 					setRun(true);
 				}}>
-				New Picture
+				Redo Picture
 			</button>
 		</div>
 	);
