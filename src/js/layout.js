@@ -12,7 +12,7 @@ import { Finish } from "./component/finish";
 export const Layout = () => {
 	return (
 		<div className="d-flex flex-column h-100">
-			<BrowserRouter basename={process.env.BASENAME || ""}>
+			<BrowserRouter basename="/CameraAppBasic/">
 				<Switch>
 					<Route exact path="/" component={One} />
 					<Route exact path="/two" component={Two} />
