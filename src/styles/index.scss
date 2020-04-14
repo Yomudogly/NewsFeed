@@ -31,11 +31,11 @@
 }
 
 .mask {
-    -webkit-mask-image: url(../../mask6.png);
+    -webkit-mask-image: url(../static/mask.png);
     -webkit-mask-size: cover;
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-position: center;
-    mask-image: url(../../mask6.png);
+    mask-image: url(../static/mask.png);
     mask-repeat: no-repeat;
     mask-position: center;
     mask-size: cover;
