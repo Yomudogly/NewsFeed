@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 var PrettierPlugin = require("prettier-webpack-plugin");
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: [
@@ -47,6 +48,9 @@ module.exports = {
     historyApiFallback: true
   },
   plugins: [
+    new Dotenv({
+      systemvars: true
+  }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.ProvidePlugin({
       $: 'jquery',
