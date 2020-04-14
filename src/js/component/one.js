@@ -51,11 +51,11 @@ export const One = () => {
 	const isFullscreen = false;
 
 	return (
-		<div>
+		<div className="camera">
 			{dataUri ? (
 				<ImagePreview dataUri={dataUri} isFullscreen={isFullscreen} />
 			) : (
-				<div className="mask2">
+				<div className="mask">
 					<Camera
 						onTakePhotoAnimationDone={handleTakePhotoAnimationDone}
 						isFullscreen={isFullscreen}
@@ -73,10 +73,13 @@ export const One = () => {
 					pathname: "/two",
 					search: location.search
 				}}>
-				<button onClick={pictureSendHandler}>Next Picture</button>
+				<button className="new_pic" onClick={pictureSendHandler}>
+					Next Picture
+				</button>
 			</Link>
 
 			<button
+				className="retake_pic"
 				onClick={() => {
 					setRun(true);
 				}}>

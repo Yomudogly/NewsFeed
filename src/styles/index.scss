@@ -11,9 +11,24 @@
     import 'relative/path/to/stylesheet.scss';
 
 */
+.camera {
+    height: 80%;
+    text-align: center;
+}
 
-.mask2 {
-   
+.new_pic {
+    border-radius: 5px;
+    margin-right: 1em;
+    margin-top: 1em;
+}
+
+.retake_pic {
+    border-radius: 5px;
+    margin-top: 2em;
+    margin-left: 1em;
+}
+
+.mask {
     -webkit-mask-image: url(../../mask6.png);
     -webkit-mask-size: cover;
     -webkit-mask-repeat: no-repeat;
@@ -22,5 +37,6 @@
     mask-repeat: no-repeat;
     mask-position: center;
     mask-size: cover;
+    position: relative;
 }
 
