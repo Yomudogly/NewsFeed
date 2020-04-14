@@ -63,6 +63,7 @@ export const One = () => {
 						idealResolution={{ width: 1024, height: 768 }}
 						imageCompression={0.95}
 						isMaxResolution={true}
+						isImageMirror={true}
 						imageType={IMAGE_TYPES.JPG}
 					/>
 				</div>

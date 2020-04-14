@@ -14,18 +14,16 @@
 
 .mask2 {
     //-webkit-mask-image: linear-gradient(rgb(15, 3, 3), transparent);
-    height: 70%;
+    // height: 70%;
     -webkit-mask-image: url(../../mask4.png);
-    -webkit-mask-size: contain;
-    -webkit-mask-mode: alpha;
+    -webkit-mask-size: 85%;
     //-webkit-mask-origin: content-box;
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-position: center;
     mask-image: url(../../mask4.png);
     mask-repeat: no-repeat;
     mask-position: center;
-    mask-size: contain;
-    mask-mode: alpha;
+    mask-size: 85%;
     // -webkit-mask-box-image: url(../../mask2.png) repeat;
     // mask-border: url(../../mask2.png) repeat;
 }
