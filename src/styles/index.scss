@@ -13,9 +13,9 @@
 */
 
 .mask2 {
-    -webkit-mask-image: linear-gradient(rgb(15, 3, 3), transparent);
+    //-webkit-mask-image: linear-gradient(rgb(15, 3, 3), transparent);
     -webkit-mask-image: url(../../mask1.png);
-    -webkit-mask-size: 20%;
+    -webkit-mask-size: 80%;
     //-webkit-mask-origin: content-box;
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-position: center;
