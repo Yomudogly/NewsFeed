@@ -51,15 +51,11 @@ export const One = () => {
 	const isFullscreen = false;
 
 	return (
-		<div style={{ height: "80%", marginTop: "20px" }}>
-			<div style={{ height: "80%" }}>
-				{dataUri ? (
-					<ImagePreview
-						dataUri={dataUri}
-						isFullscreen={isFullscreen}
-					/>
-				) : (
-					// <div className="mask2">
+		<div>
+			{dataUri ? (
+				<ImagePreview dataUri={dataUri} isFullscreen={isFullscreen} />
+			) : (
+				<div className="mask2">
 					<Camera
 						onTakePhotoAnimationDone={handleTakePhotoAnimationDone}
 						isFullscreen={isFullscreen}
@@ -69,9 +65,8 @@ export const One = () => {
 						isMaxResolution={true}
 						imageType={IMAGE_TYPES.JPG}
 					/>
-					// </div>
-				)}
-			</div>
+				</div>
+			)}
 			<Link
 				to={{
 					pathname: "/two",
