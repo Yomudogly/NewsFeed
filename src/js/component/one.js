@@ -63,7 +63,7 @@ export const One = () => {
 						idealResolution={{ width: 1024, height: 768 }}
 						imageCompression={0.95}
 						isMaxResolution={true}
-						isImageMirror={true}
+						isImageMirror={false}
 						imageType={IMAGE_TYPES.JPG}
 					/>
 				</div>
@@ -73,14 +73,14 @@ export const One = () => {
 					pathname: "/two",
 					search: location.search
 				}}>
-				<button onClick={pictureSendHandler}>Send Picture</button>
+				<button onClick={pictureSendHandler}>Next Picture</button>
 			</Link>
 
 			<button
 				onClick={() => {
 					setRun(true);
 				}}>
-				Redo Picture
+				Retake Picture
 			</button>
 		</div>
 	);
