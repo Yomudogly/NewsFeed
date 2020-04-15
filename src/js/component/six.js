@@ -35,13 +35,29 @@ export const Six = () => {
 		const values = queryString.parse(location.search);
 
 		axios
-			.post("https://snkrsden-api.herokuapp.com/media", {
-				alt: "Sixth photo",
-				image: dataUri,
-				product_id: values.product,
-				sizes_shoes_val: values.size,
-				user_id: values.id
-			})
+			.post(
+				"https://snkrsden-api.herokuapp.com/media",
+				{
+					alt: "First photo",
+					image: dataUri,
+					product_id: values.product,
+					sizes_shoes_val: values.size,
+					user_id: values.id
+				},
+				{
+					onUploadProgress: progressEvent => {
+						console.log(
+							"Upload progress: " +
+								Math.round(
+									(progressEvent.loaded /
+										progressEvent.total) *
+										100
+								) +
+								"%"
+						);
+					}
+				}
+			)
 			.then(resp => {
 				console.log(resp.statusText);
 				// setRun(true);
@@ -51,32 +67,46 @@ export const Six = () => {
 	const isFullscreen = false;
 
 	return (
-		<div>
+		<div className="container text-center">
 			{dataUri ? (
-				<ImagePreview dataUri={dataUri} isFullscreen={isFullscreen} />
+				<div className="">
+					<ImagePreview
+						dataUri={dataUri}
+						isFullscreen={isFullscreen}
+					/>
+					<Link
+						to={{
+							pathname: "/finish",
+							search: location.search
+						}}>
+						<button
+							className="btn btn-dark btn-lg mr-2 mt-2 mb-2"
+							onClick={pictureSendHandler}>
+							Submit
+						</button>
+					</Link>
+					<button
+						className="btn btn-dark btn-lg ml-2 mt-2 mb-2"
+						onClick={() => {
+							setRun(true);
+						}}>
+						Retake Picture
+					</button>
+				</div>
 			) : (
-				// <div className="mask2">
-				<Camera
-					onTakePhotoAnimationDone={handleTakePhotoAnimationDone}
-					isFullscreen={isFullscreen}
-					idealFacingMode={FACING_MODES.ENVIRONMENT}
-					idealResolution={{ width: 1024, height: 768 }}
-					imageCompression={0.95}
-					isMaxResolution={true}
-					imageType={IMAGE_TYPES.JPG}
-				/>
-				// </div>
+				<div className="mask6">
+					<Camera
+						onTakePhotoAnimationDone={handleTakePhotoAnimationDone}
+						isFullscreen={isFullscreen}
+						idealFacingMode={FACING_MODES.ENVIRONMENT}
+						idealResolution={{ width: 1024, height: 768 }}
+						imageCompression={0.95}
+						isMaxResolution={true}
+						isImageMirror={false}
+						imageType={IMAGE_TYPES.JPG}
+					/>
+				</div>
 			)}
-			<Link to="/finish">
-				<button onClick={pictureSendHandler}>Send Picture</button>
-			</Link>
-
-			<button
-				onClick={() => {
-					setRun(true);
-				}}>
-				Redo Picture
-			</button>
 		</div>
 	);
 };

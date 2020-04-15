@@ -36,51 +36,76 @@ export const Three = () => {
 
 		axios
 			.post("https://snkrsden-api.herokuapp.com/media", {
-				alt: "Third photo",
+				alt: "First photo",
 				image: dataUri,
 				product_id: values.product,
 				sizes_shoes_val: values.size,
 				user_id: values.id
 			})
-			.then(resp => {
-				console.log(resp.statusText);
-				// setRun(true);
-			});
+			.then(
+				resp => {
+					console.log(resp.statusText);
+					// setRun(true);
+				},
+				{
+					onUploadProgress: progressEvent => {
+						console.log(
+							"Upload progress: " +
+								Math.round(
+									(progressEvent.loaded /
+										progressEvent.total) *
+										100
+								) +
+								"%"
+						);
+					}
+				}
+			);
 	};
 
 	const isFullscreen = false;
 
 	return (
-		<div>
+		<div className="container text-center">
 			{dataUri ? (
-				<ImagePreview dataUri={dataUri} isFullscreen={isFullscreen} />
+				<div className="">
+					<ImagePreview
+						dataUri={dataUri}
+						isFullscreen={isFullscreen}
+					/>
+					<Link
+						to={{
+							pathname: "/four",
+							search: location.search
+						}}>
+						<button
+							className="btn btn-dark btn-lg mr-2 mt-2 mb-2"
+							onClick={pictureSendHandler}>
+							Next Picture
+						</button>
+					</Link>
+					<button
+						className="btn btn-dark btn-lg ml-2 mt-2 mb-2"
+						onClick={() => {
+							setRun(true);
+						}}>
+						Retake Picture
+					</button>
+				</div>
 			) : (
-				// <div className="mask2">
-				<Camera
-					onTakePhotoAnimationDone={handleTakePhotoAnimationDone}
-					isFullscreen={isFullscreen}
-					idealFacingMode={FACING_MODES.ENVIRONMENT}
-					idealResolution={{ width: 1024, height: 768 }}
-					imageCompression={0.95}
-					isMaxResolution={true}
-					imageType={IMAGE_TYPES.JPG}
-				/>
-				// </div>
+				<div className="mask3">
+					<Camera
+						onTakePhotoAnimationDone={handleTakePhotoAnimationDone}
+						isFullscreen={isFullscreen}
+						idealFacingMode={FACING_MODES.ENVIRONMENT}
+						idealResolution={{ width: 1024, height: 768 }}
+						imageCompression={0.95}
+						isMaxResolution={true}
+						isImageMirror={false}
+						imageType={IMAGE_TYPES.JPG}
+					/>
+				</div>
 			)}
-			<Link
-				to={{
-					pathname: "/four",
-					search: location.search
-				}}>
-				<button onClick={pictureSendHandler}>Send Picture</button>
-			</Link>
-
-			<button
-				onClick={() => {
-					setRun(true);
-				}}>
-				Redo Picture
-			</button>
 		</div>
 	);
 };

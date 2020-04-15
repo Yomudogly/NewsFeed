@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
+import { Start } from "./component/start";
 import { One } from "./component/one";
 import { Two } from "./component/two";
 import { Three } from "./component/three";
@@ -14,7 +15,8 @@ export const Layout = () => {
 		<div className="d-flex flex-column h-100">
 			<BrowserRouter basename={process.env.BASENAME || ""}>
 				<Switch>
-					<Route exact path="/" component={One} />
+					<Route exact path="/" component={Start} />
+					<Route exact path="/one" component={One} />
 					<Route exact path="/two" component={Two} />
 					<Route exact path="/three" component={Three} />
 					<Route exact path="/four" component={Four} />

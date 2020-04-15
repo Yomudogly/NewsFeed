@@ -35,13 +35,29 @@ export const One = () => {
 		const values = queryString.parse(location.search);
 
 		axios
-			.post("https://snkrsden-api.herokuapp.com/media", {
-				alt: "First photo",
-				image: dataUri,
-				product_id: values.product,
-				sizes_shoes_val: values.size,
-				user_id: values.id
-			})
+			.post(
+				"https://snkrsden-api.herokuapp.com/media",
+				{
+					alt: "First photo",
+					image: dataUri,
+					product_id: values.product,
+					sizes_shoes_val: values.size,
+					user_id: values.id
+				},
+				{
+					onUploadProgress: progressEvent => {
+						console.log(
+							"Upload progress: " +
+								Math.round(
+									(progressEvent.loaded /
+										progressEvent.total) *
+										100
+								) +
+								"%"
+						);
+					}
+				}
+			)
 			.then(resp => {
 				console.log(resp.statusText);
 				// setRun(true);
@@ -51,9 +67,32 @@ export const One = () => {
 	const isFullscreen = false;
 
 	return (
-		<div className="camera">
+		<div className="container text-center">
 			{dataUri ? (
-				<ImagePreview dataUri={dataUri} isFullscreen={isFullscreen} />
+				<div className="">
+					<ImagePreview
+						dataUri={dataUri}
+						isFullscreen={isFullscreen}
+					/>
+					<Link
+						to={{
+							pathname: "/two",
+							search: location.search
+						}}>
+						<button
+							className="btn btn-dark btn-lg mr-2 mt-2 mb-2"
+							onClick={pictureSendHandler}>
+							Next Picture
+						</button>
+					</Link>
+					<button
+						className="btn btn-dark btn-lg ml-2 mt-2 mb-2"
+						onClick={() => {
+							setRun(true);
+						}}>
+						Retake Picture
+					</button>
+				</div>
 			) : (
 				<div className="mask">
 					<Camera
@@ -68,23 +107,6 @@ export const One = () => {
 					/>
 				</div>
 			)}
-			<Link
-				to={{
-					pathname: "/two",
-					search: location.search
-				}}>
-				<button className="new_pic" onClick={pictureSendHandler}>
-					Next Picture
-				</button>
-			</Link>
-
-			<button
-				className="retake_pic"
-				onClick={() => {
-					setRun(true);
-				}}>
-				Retake Picture
-			</button>
 		</div>
 	);
 };

@@ -11,24 +11,6 @@
     import 'relative/path/to/stylesheet.scss';
 
 */
-.camera {
-    max-height: 90%;
-    text-align: center;
-}
-
-.new_pic {
-    border-radius: 5px;
-    margin-right: 0.5em;
-    margin-bottom: 0.5em;
-    margin-top: 0.5em;
-}
-
-.retake_pic {
-    border-radius: 5px;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-    margin-left: 0.5em;
-}
 
 .mask {
     -webkit-mask-image: url(../static/mask.png);
@@ -36,6 +18,66 @@
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-position: center;
     mask-image: url(../static/mask.png);
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: cover;
+    position: relative;
+}
+
+.mask2 {
+    -webkit-mask-image: url(../static/mask2.png);
+    -webkit-mask-size: cover;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-image: url(../static/mask2.png);
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: cover;
+    position: relative;
+}
+
+.mask3 {
+    -webkit-mask-image: url(../static/mask3.png);
+    -webkit-mask-size: cover;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-image: url(../static/mask3.png);
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: cover;
+    position: relative;
+}
+
+.mask4 {
+    -webkit-mask-image: url(../static/mask4.png);
+    -webkit-mask-size: cover;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-image: url(../static/mask4.png);
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: cover;
+    position: relative;
+}
+
+.mask5 {
+    -webkit-mask-image: url(../static/mask5.png);
+    -webkit-mask-size: cover;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-image: url(../static/mask5.png);
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: cover;
+    position: relative;
+}
+
+.mask6 {
+    -webkit-mask-image: url(../static/mask6.png);
+    -webkit-mask-size: cover;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-image: url(../static/mask6.png);
     mask-repeat: no-repeat;
     mask-position: center;
     mask-size: cover;
