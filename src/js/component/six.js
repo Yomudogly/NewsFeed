@@ -67,9 +67,9 @@ export const Six = () => {
 	const isFullscreen = false;
 
 	return (
-		<div className="container text-center">
+		<div className="container-fluid text-center">
 			{dataUri ? (
-				<div className="">
+				<div className="container">
 					<ImagePreview
 						dataUri={dataUri}
 						isFullscreen={isFullscreen}
