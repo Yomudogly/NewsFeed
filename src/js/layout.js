@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { MemoryRouter, Route, Switch } from "react-router-dom";
 
 import { Start } from "./component/start";
 import { One } from "./component/one";
@@ -13,7 +13,7 @@ import { Finish } from "./component/finish";
 export const Layout = () => {
 	return (
 		<div className="d-flex flex-column h-100">
-			<BrowserRouter basename={process.env.BASENAME || ""}>
+			<MemoryRouter>
 				<Switch>
 					<Route exact path="/" component={Start} />
 					<Route exact path="/one" component={One} />
@@ -25,7 +25,7 @@ export const Layout = () => {
 					<Route exact path="/finish" component={Finish} />
 					<Route render={() => <h1>Not found!</h1>} />
 				</Switch>
-			</BrowserRouter>
+			</MemoryRouter>
 		</div>
 	);
 };

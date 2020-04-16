@@ -63,16 +63,13 @@ export const Three = () => {
 			);
 	};
 
-	const isFullscreen = false;
+	const isFullscreen = true;
 
 	return (
-		<div className="container-fluid text-center">
+		<div>
 			{dataUri ? (
-				<div className="container">
-					<ImagePreview
-						dataUri={dataUri}
-						isFullscreen={isFullscreen}
-					/>
+				<div className="container ml-0 mr-auto text-center">
+					<ImagePreview dataUri={dataUri} isFullscreen={false} />
 					<Link
 						to={{
 							pathname: "/four",
