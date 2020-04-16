@@ -12,7 +12,7 @@ export const Start = () => {
 	return (
 		<div className="container">
 			<div className="jumbotron mt-4 pb-4">
-				<h1 className="display-4">Hey body!</h1>
+				<h1 className="display-4">Hey buddy!</h1>
 				<p className="lead">
 					You are about to start take pictures of your sneakers. Make
 					sure that all 6 photos are match with frames.
