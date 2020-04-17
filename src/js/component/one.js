@@ -17,7 +17,7 @@ export const One = () => {
 	// 	const values = queryString.parse(location.search);
 	// 	console.log(values.id);
 	// 	console.log(values.size);
-	// });
+	// }, []);
 
 	useEffect(() => {
 		if (run) {

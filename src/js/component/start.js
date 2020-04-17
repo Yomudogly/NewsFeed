@@ -6,7 +6,7 @@ export const Start = () => {
 	// 	const values = queryString.parse(location.search);
 	// 	console.log(values.id);
 	// 	console.log(values.size);
-	// });
+	// }, []);
 	// Need to check if parameter with hash matches hash in DB and store it in browser!!!
 
 	return (
