@@ -3,6 +3,8 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 var PrettierPlugin = require("prettier-webpack-plugin");
 const Dotenv = require('dotenv-webpack');
+const WorkboxPlugin = require('workbox-webpack-plugin');
+const ManifestPlugin = require('webpack-manifest-plugin');
 
 module.exports = {
   entry: [
@@ -42,7 +44,7 @@ module.exports = {
   },
   devtool: "source-map",
   devServer: {
-    contentBase:  './dist',
+    contentBase:  './public',
     hot: true,
     disableHostCheck: true,
     historyApiFallback: true
@@ -61,8 +63,72 @@ module.exports = {
       Dropdown: "exports-loader?Dropdown!bootstrap/js/dist/dropdown"
     }),
     new HtmlWebpackPlugin({
-        favicon: 'camera.png',
-        template: 'template.html'
+        template: 'template.html',
+        title: 'Camera App',
+      }),
+    new WorkboxPlugin.GenerateSW({
+      // these options encourage the ServiceWorkers to get in there fast
+      // and not allow any straggling "old" SWs to hang around
+      clientsClaim: true,
+      skipWaiting: true,
+    }),
+    new ManifestPlugin({
+      filter: ({name}) => {
+        !name.endsWith('.png')
+        !name.endsWith('.map')
+      },
+      seed: {
+        "short_name": "CameraApp",
+        "name": "SnkrsDen Camera App",
+        "description": "Take pictures of your sneakers to sell them on snkrsden.com",
+        "orientation": "portrait-primary",
+        "icons": [
+          {
+            "src": "icon-120.png",
+            "sizes": "120x120",
+            "type": "image/png"
+          },
+          {
+            "src": "icon-144.png",
+            "sizes": "144x144",
+            "type": "image/png"
+          },
+          {
+            "src": "icon-152.png",
+            "sizes": "152x152",
+            "type": "image/png"
+          },
+          {
+            "src": "icon-167.png",
+            "sizes": "167x167",
+            "type": "image/png"
+          },
+          {
+            "src": "icon-180.png",
+            "sizes": "180x180",
+            "type": "image/png"
+          },
+          {
+            "src": "icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+          },
+          {
+            "src": "icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+          },
+          {
+            "src": "favicon.png",
+            "sizes": "64x64",
+            "type": "image/png"
+          }
+        ],
+        "start_url": "/",
+        "display": "standalone",
+        "theme_color": "#99070c",
+        "background_color": "#99070c"
+      }
     }),
     new PrettierPlugin({
       parser: "babel",

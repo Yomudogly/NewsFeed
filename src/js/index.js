@@ -11,5 +11,18 @@ import "../styles/index.scss";
 //import your own components
 import { Layout } from "./layout";
 
+if ("serviceWorker" in navigator) {
+	window.addEventListener("load", () => {
+		navigator.serviceWorker
+			.register("/service-worker.js")
+			.then(registration => {
+				console.log("SW registered: ", registration.active.state);
+			})
+			.catch(registrationError => {
+				console.log("SW registration failed: ", registrationError);
+			});
+	});
+}
+
 //render your react application
 ReactDOM.render(<Layout />, document.querySelector("#app"));

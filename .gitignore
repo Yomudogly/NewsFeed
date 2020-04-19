@@ -57,6 +57,14 @@ node_modules/
 # ignore the dist directory were our bundle files are going to be
 public/*
 !public/index.html
+!icon-120.png
+!icon-144.png
+!icon-152.png
+!icon-167.png
+!icon-180.png
+!icon-192.png
+!icon-1512.png
+
 
 dist/*
 !dist/index.html
