@@ -12,75 +12,29 @@
 
 */
 
-.mask {
-    -webkit-mask-image: url(../static/mask.png);
-    -webkit-mask-size: cover;
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-position: center;
-    mask-image: url(../static/mask.png);
-    mask-repeat: no-repeat;
-    mask-position: center;
-    mask-size: cover;
-    position: relative;
+.card-columns {
+  @include media-breakpoint-only(xs) {
+    column-count: 2;
+  }
+  @include media-breakpoint-only(sm) {
+    column-count: 3;
+  }
 }
 
-.mask2 {
-    -webkit-mask-image: url(../static/mask2.png);
-    -webkit-mask-size: cover;
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-position: center;
-    mask-image: url(../static/mask2.png);
-    mask-repeat: no-repeat;
-    mask-position: center;
-    mask-size: cover;
-    position: relative;
+.textNav {
+  @include media-breakpoint-only(xs) {
+    font-size: 0.75em;
+  }
+  @include media-breakpoint-only(sm) {
+    font-size: 0.75em;
+  }
+  @include media-breakpoint-only(md) {
+    font-size: 1.25em;
+  }
+  @include media-breakpoint-only(lg) {
+    font-size: 1.5em;
+  }
+  @include media-breakpoint-only(xl) {
+    font-size: 1.5em;
+  }
 }
-
-.mask3 {
-    -webkit-mask-image: url(../static/mask3.png);
-    -webkit-mask-size: cover;
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-position: center;
-    mask-image: url(../static/mask3.png);
-    mask-repeat: no-repeat;
-    mask-position: center;
-    mask-size: cover;
-    position: relative;
-}
-
-.mask4 {
-    -webkit-mask-image: url(../static/mask4.png);
-    -webkit-mask-size: cover;
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-position: center;
-    mask-image: url(../static/mask4.png);
-    mask-repeat: no-repeat;
-    mask-position: center;
-    mask-size: cover;
-    position: relative;
-}
-
-.mask5 {
-    -webkit-mask-image: url(../static/mask5.png);
-    -webkit-mask-size: cover;
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-position: center;
-    mask-image: url(../static/mask5.png);
-    mask-repeat: no-repeat;
-    mask-position: center;
-    mask-size: cover;
-    position: relative;
-}
-
-.mask6 {
-    -webkit-mask-image: url(../static/mask6.png);
-    -webkit-mask-size: cover;
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-position: center;
-    mask-image: url(../static/mask6.png);
-    mask-repeat: no-repeat;
-    mask-position: center;
-    mask-size: cover;
-    position: relative;
-}
-

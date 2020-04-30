@@ -9,7 +9,7 @@ import "bootstrap";
 import "../styles/index.scss";
 
 //import your own components
-import { Layout } from "./layout";
+import { App } from "./app";
 
 if ("serviceWorker" in navigator) {
 	window.addEventListener("load", () => {
@@ -25,4 +25,4 @@ if ("serviceWorker" in navigator) {
 }
 
 //render your react application
-ReactDOM.render(<Layout />, document.querySelector("#app"));
+ReactDOM.render(<App />, document.querySelector("#app"));
