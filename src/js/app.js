@@ -6,7 +6,9 @@ export const App = () => {
 	const [posts, setPosts] = useState([]);
 
 	useEffect(() => {
-		fetch("https://yankeekicks.com/wp-json/wp/v2/posts?_embed&per_page=35")
+		fetch(
+			"https://yankeekicks.com/wp-json/better-rest-endpoints/v1/posts?per_page=54&content=false"
+		)
 			.then(response => {
 				//console.log(resp.ok); // will be true if the response is successfull
 				//console.log(resp.status); // the status code = 200 or code = 400 etc.
@@ -19,8 +21,8 @@ export const App = () => {
 			.then(list => {
 				setPosts(
 					list.map(item => ({
-						url: item.link,
-						img: item._embedded["wp:featuredmedia"]["0"].source_url
+						url: item.permalink,
+						img: item.media.medium
 					}))
 				);
 				// console.log(list);
